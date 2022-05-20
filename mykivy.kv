@@ -1,0 +1,322 @@
+WindowManager:
+    DepartureWindow:
+    ArrivalWindow:
+    GenderSelection:
+    MainFirstWindow:
+    ErrorScreen:
+
+
+<DepartureWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    GridLayout:
+        cols:1
+
+        padding: 10
+        spacing: 10
+
+        GridLayout:
+            cols:2
+
+            TextInput:
+                halign: 'center'
+                height: 30
+                multiline: False
+                id: dpRoomNumberInput
+                multiline: False
+
+            Button:
+                text: "Submit Current \nRoom Number"
+                on_release:
+                    root.dp_roomsubmit()
+                    app.root.current = "arrival"
+                background_color: (0,0,0,0)
+                background_normal: ''
+                canvas.before:
+                    Color:
+                        rgba: (149/255.0, 232/255.0, 23/255.0, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [80]
+
+        GridLayout:
+            cols:2
+
+            RoundedButton1:
+                text: "Dining Hall"
+                on_release:
+                    root.dp_quickroomsubmit("Dining Hall")
+                    app.root.current = "arrival"
+            
+            RoundedButton1:
+                text: "Sixth Form \nCommon Room"
+                on_release:
+                    root.dp_quickroomsubmit("Sixth Form Common Room")
+                    app.root.current = "arrival"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton1:
+                text: "Staff Room"
+                on_release:
+                    root.dp_quickroomsubmit("Staff Room")
+                    app.root.current = "arrival"
+
+            RoundedButton1:
+                text: "Fred's Office"
+                on_release:
+                    root.dp_quickroomsubmit("Fred's Office")
+                    app.root.current = "arrival"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton1:
+                text: "Nearest Toilet"
+                on_release:
+                    app.root.current = "gender"
+
+            RoundedButton1:
+                text: "Picture Gallery"
+                on_release:
+                    root.dp_quickroomsubmit("Picture Gallery")
+                    app.root.current = "arrival"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton1:
+                text: "Reception"
+                on_release:
+                    root.dp_quickroomsubmit("Reception")
+                    app.root.current = "arrival"
+
+            Button:
+                background_color: (0,0,0,0)
+                background_normal: ''
+                canvas.before:
+                    Color:
+                        rgba: (47/255.0, 70/255.0, 145/255.0, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [80]
+
+                text: "Help Page"
+                on_release:
+                    app.root.current = "departure"
+
+
+<ArrivalWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    GridLayout:
+        cols:1
+        padding: 20
+        spacing: 10
+
+        GridLayout:
+            cols:2
+
+            TextInput:
+                id: arRoomNumberInput
+                multiline: False
+
+            Button:
+                text: "Submit Desired \nRoom Number"
+                on_release:
+                    root.ar_roomsubmit()
+                    app.root.current = "map"
+
+                background_color: (0,0,0,0)
+                background_normal: ''
+                canvas.before:
+                    Color:
+                        rgba: (149/255.0, 232/255.0, 23/255.0, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [80]
+
+        GridLayout:
+            cols:2
+
+            RoundedButton2:
+                text: "Dining Hall"
+                on_release:
+                    root.ar_quickroomsubmit("Dining Hall")
+                    app.root.current = "map"
+            
+            RoundedButton2:
+                text: "Sixth Form \nCommon Room"
+                on_release:
+                    root.ar_quickroomsubmit("Sixth Form Common Room")
+                    app.root.current = "map"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton2:
+                text: "Staff Room"
+                on_release:
+                    root.ar_quickroomsubmit("Staff Room")
+                    app.root.current = "map"
+
+            RoundedButton2:
+                text: "Fred's Office"
+                on_release:
+                    root.ar_quickroomsubmit("Fred's Office")
+                    app.root.current = "map"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton2:
+                text: "Nearest Toilet"
+                on_release:
+                    app.root.current = "gender"
+
+            RoundedButton2:
+                text: "Picture Gallery"
+                on_release:
+                    root.ar_quickroomsubmit("Picture Gallery")
+                    app.root.current = "map"
+
+        GridLayout:
+            cols:2
+
+            RoundedButton2:
+                text: "Reception"
+                on_release:
+                    root.ar_quickroomsubmit("Reception")
+                    app.root.current = "map"
+
+            Button:
+                background_color: (0,0,0,0)
+                background_normal: ''
+                canvas.before:
+                    Color:
+                        rgba: (201/255.0, 14/255.0, 13/255.0, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [80]
+                text: "Go Back"
+                on_release:
+                    app.root.current = "departure"
+
+
+<GenderSelection>:
+    GridLayout:
+        cols:3
+
+        RoundedButton1:
+            text: "Male Toilet"
+            on_release:
+                root.genderisor("Male")
+                app.root.current = "map"
+
+        RoundedButton1:
+            text: "Female Toilet"
+            on_release:
+                root.genderisor("Female")
+                app.root.current = "map"
+
+        RoundedButton1:
+            text: "Unisex Toilet"
+            on_release:
+                root.genderisor("Unisex")
+                app.root.current = "map"
+
+
+
+<MainFirstWindow>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    Button:
+        id: go_forwards
+        pos: (0,0)
+        size: (205,100)
+        size_hint: None, None
+        text: "Next"
+        on_release:
+            root.drawLines()
+
+    Button:
+        id: go_backwards
+        pos: (205,0)
+        size: (205,100)
+        size_hint: None, None
+        text: "Back"
+        on_release:
+            root.backwards()
+
+
+<ErrorScreen>:
+    canvas.before:
+        Color:
+            rgba: 1, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Button:
+        background_color: (0,0,0,0)
+        background_normal: ''
+        canvas.before:
+            Color:
+                rgba: (47/255.0, 70/255.0, 145/255.0, 1)
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [80]
+        text: "Go back"
+        on_release:
+            app.root.current = "departure"
+    
+
+
+
+
+
+<RoundedButton1@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (252/255.0, 190/255.0, 3/255.0, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [80]
+
+
+<RoundedButton2@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (47/255.0, 70/255.0, 145/255.0, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [80]
