@@ -447,8 +447,6 @@ class GenderSelection(Screen):
 class WindowManager(ScreenManager):
     pass
 
-kv = Builder.load_file("main.kv")
-
 class MainApp(App):
     def build(self):
         sm = ScreenManager(transition = NoTransition())
